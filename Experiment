@@ -14,7 +14,7 @@ import time
 import gurobipy as gp
 from functions import *
 
-percentiles = [0.01,0.05, 0.25, 0.50, 0.75, 0.95, 0.99]#Backtracking limits were selected to reflect practical operating points, ranging from minimal backtracking (1) to aggressive partial backtracking (60)
+percentiles = [0.01,0.05, 0.25, 0.50, 0.75, 0.95, 0.99]#Backtracking depth percentile based on the beam load distribution
 thread = 10# using 10 threads
 dfs_best_of_fastest = []
 dfs_fastest_of_best = []
@@ -24,7 +24,7 @@ Gurobi_SOL=pd.DataFrame(columns=['Instance','User','Simulation','Solver','Comput
 OR_TOOLS_SOL=pd.DataFrame(columns=['Instance','User','Simulation','Solver','Computation Time(s)','Total Allocated Demand'])
 for z in [4]:
     for INS in [500]:
-        Data=pd.read_excel('/Users/ryanli/Desktop/Deakin_research/SATCOM Data/Instances/Instance_'+str(z)+'.xlsx')
+        Data=pd.read_excel('/Data/User Data/Instance_'+str(z)+'.xlsx')
         data=Data.iloc[:INS].copy()
         
         for h in range(20):      
